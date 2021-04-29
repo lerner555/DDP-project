@@ -1,0 +1,32 @@
+---
+title: "DDP-project"
+author: "Amir"
+date: "29 4 2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Creating a data frame
+
+First let's create a data frame that has random 5 longitude and latitudes
+
+```{r}
+set.seed(2021-04-29)
+df <- data.frame(lat = runif(5, min = 35.0, max = 40.0),
+                 lng = runif(5, min = -80.0, max = -77.0))
+```
+
+## Creating the map
+
+Now let's plot the 5 points on the map
+
+```{r}
+library(leaflet)
+df %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(clusterOptions = markerClusterOptions())
+```
